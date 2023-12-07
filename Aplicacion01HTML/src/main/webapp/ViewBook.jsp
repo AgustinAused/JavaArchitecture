@@ -32,9 +32,7 @@
 		rs = sentencia.executeQuery(ConsultaSQL);
 		//5
 		while(rs.next()){%>
-			<%=rs.getString("isbn") %> | 
-			<%=rs.getString("titulo") %> | 
-			<%=rs.getString("categoria") %>
+			{ <%=rs.getString("isbn") %> | <%=rs.getString("titulo") %> | <%=rs.getString("categoria") %> }
 			<br/>	
 		<%}
 	} catch(ClassNotFoundException e){
