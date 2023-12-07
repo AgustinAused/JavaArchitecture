@@ -1,6 +1,23 @@
 # Compiled class files
 *.class
 
+# Compiled JSP files
+*.jsp
+
+# Work directories
+work/
+target/
+out/
+build/
+dist/
+bin/
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
 # Log files
 *.log
 
@@ -48,20 +65,5 @@ buildNumber.properties
 build/
 .gradle/
 
-
 # VS Code files
 .vscode/
-```
-I have tried to add the following to the .gitignore file:
-```
-# Compiled class files
-*.class
-```
-But it does not work. I have also tried to add the following to the .gitignore file:
-```
-# Compiled class files
-*.class
-**/*.class
-```
-But it does not work either. I have also tried to add the following to the .gitignore file:
-```
