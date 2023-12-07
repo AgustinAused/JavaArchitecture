@@ -1,0 +1,67 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+*.iunit
+*.idr
+*.imodule
+*.iws
+
+
+# Eclipse files
+.classpath
+.project
+.settings/
+*.launch
+*.pydevproject
+
+# NetBeans files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Maven files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# Gradle files
+build/
+.gradle/
+
+
+# VS Code files
+.vscode/
+```
+I have tried to add the following to the .gitignore file:
+```
+# Compiled class files
+*.class
+```
+But it does not work. I have also tried to add the following to the .gitignore file:
+```
+# Compiled class files
+*.class
+**/*.class
+```
+But it does not work either. I have also tried to add the following to the .gitignore file:
+```
