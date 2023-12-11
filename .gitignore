@@ -1,3 +1,5 @@
+# Reglas generales para todas las aplicaciones
+
 # Compiled class files
 *.class
 
@@ -30,7 +32,6 @@ temp/
 *.idr
 *.imodule
 *.iws
-
 
 # Eclipse files
 .classpath
