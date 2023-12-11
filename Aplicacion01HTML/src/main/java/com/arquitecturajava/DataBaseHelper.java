@@ -12,7 +12,7 @@ public class DataBaseHelper {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = System.getenv("URL");
 	private static final String USUARIO = System.getenv("USER");
-	private static final String CLAVE = System.getenv("PASSWORD") ;
+	private static final String CLAVE = System.getenv("PASSWORD");
 	
 	public DataBaseHelper() {
 		System.out.println("URL: " + URL);
