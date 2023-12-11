@@ -14,14 +14,12 @@
 <%
 	//1
 	ResultSet rs = null;		
-	//2 
-	
 	//3,4
 	try{
 		
 		String ConsultaSQL = "SELECT isbn,titulo,categoria from Libros";
 		DataBaseHelper db = new DataBaseHelper();
-		rs = db.selecionarRegistros(ConsultaSQL);
+		rs = db.seleccionarRegistros(ConsultaSQL);
 		//5
 		while(rs.next())%>
 			{ <%=rs.getString("isbn") %> | <%=rs.getString("titulo") %> | <%=rs.getString("categoria") %> }
