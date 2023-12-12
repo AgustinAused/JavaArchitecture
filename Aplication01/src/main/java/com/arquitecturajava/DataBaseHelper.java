@@ -70,12 +70,9 @@ public class DataBaseHelper {
 			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
 			sentencia = conexion.createStatement();
 			filas = sentencia.executeQuery(consultaSQL);
-			return filas;
 		} catch (ClassNotFoundException e) {
-			System.out.println(e);
 			System.out.println("Error Driver" + e.getMessage());
 		} catch (SQLException e) {
-			System.out.println(e);
 			System.out.println("Error de SQL " + e.getMessage());
 		}
 		return filas;
