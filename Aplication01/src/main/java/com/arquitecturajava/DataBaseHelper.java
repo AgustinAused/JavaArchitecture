@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 public class DataBaseHelper {
 
-	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String DRIVER = "com.mysql.jdbc.Driver";
  	private static final String URL = "jdbc:mysql://localhost:3306/javaarchitecture"; // System.getenv("URL");
 	private static final String USER = "root"; //System.getenv("USER");
 	private static final String PASSWORD = "Agustin-aused4"; //System.getenv("PASSWORDDB") 
