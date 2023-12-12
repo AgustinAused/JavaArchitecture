@@ -28,64 +28,54 @@ public class DataBaseHelper {
 		Connection conexion = null;
 		Statement sentencia = null;
 		int filasAfectadas = 0;
-		
+
 		try {
 			Class.forName(DRIVER);
-			conexion = DriverManager.getConnection(URL,USER,PASSWORD);
+			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
 			sentencia = conexion.createStatement();
 			filasAfectadas = sentencia.executeUpdate(consultaSQL);
-		}catch(ClassNotFoundException e){
+		} catch (ClassNotFoundException e) {
 			System.out.print("Error en la carga del driver" + e.getMessage());
-			
-		} catch(SQLException e){
+
+		} catch (SQLException e) {
 			System.out.println("Error accediendo a la base de datos : " + e.getMessage());
-			
-		}finally{
-			
-			//5
-			if(sentencia != null){
-				try{sentencia.close();}
-				catch(SQLException e){System.out.print("Error cerrando la sentecia " + e.getMessage());}
+
+		} finally {
+
+			// 5
+			if (sentencia != null) {
+				try {
+					sentencia.close();
+				} catch (SQLException e) {
+					System.out.print("Error cerrando la sentecia " + e.getMessage());
+				}
 			}
-			if (conexion != null){
-				try{conexion.close();}
-				catch(SQLException e){System.out.print("Eroor cerrando la conexion  "+ e.getMessage());}
+			if (conexion != null) {
+				try {
+					conexion.close();
+				} catch (SQLException e) {
+					System.out.print("Eroor cerrando la conexion  " + e.getMessage());
+				}
 			}
 		}
 		return filasAfectadas;
 	}
-	public ResultSet selecionarRegistros(String consultaSQL) {
+
+	public ResultSet seleccionarRegistros(String consultaSQL) {
 		Connection conexion = null;
 		Statement sentencia = null;
 		ResultSet filas = null;
-		
 		try {
 			Class.forName(DRIVER);
-			conexion = DriverManager.getConnection(URL,USER,PASSWORD);
+			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
 			sentencia = conexion.createStatement();
-			
-			
-			
-		}catch(ClassNotFoundException e){
-			System.out.print("Error en la carga del driver" + e.getMessage());
-			
-		} catch(SQLException e){
-			System.out.println("Error accediendo a la base de datos : " + e.getMessage());
-			
-		}finally{
-			
-			//5
-			if(sentencia != null){
-				try{sentencia.close();}
-				catch(SQLException e){System.out.print("Error cerrando la sentecia " + e.getMessage());}
-			}
-			if (conexion != null){
-				try{conexion.close();}
-				catch(SQLException e){System.out.print("Eroor cerrando la conexion  "+ e.getMessage());}
-			}
+			filas = sentencia.executeQuery(consultaSQL);
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error Driver" + e.getMessage());
+		} catch (SQLException e) {
+			System.out.println("Error de SQL " + e.getMessage());
 		}
 		return filas;
-		
 	}
-	
+
 }
