@@ -40,20 +40,11 @@ public class Book {
 
 
 	public static List<String> searchAllCategory() {
-		String consultaSQL = "select distinct(categoria) from Libros";
-		DataBaseHelper helper = new DataBaseHelper();
-		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
-		var categogyList = new ArrayList<String>();
-		String categoria = null;
-		try {
-			while(rs.next()) {
-				categoria = rs.getString("categoria");
-				categogyList.add(categoria);
-			}			
-		}catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		return categogyList;
+		String consultaSQL = "select distint(categoria) from Libros";
+		DataBaseHelper<String> helper = new DataBaseHelper<String>();
+		List<String> categoryList = helper.seleccionarRegistros(consultaSQL,
+		String.class);
+		return categoryList;
 	}
 	public void insert() {
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
@@ -64,18 +55,9 @@ public class Book {
 	
 	public static List<Book> searchAll() {
 		String consultaSQL = "select isbn,titulo,categoria from Libros";
-		DataBaseHelper helper = new DataBaseHelper();
-		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
-		var bookList = new ArrayList<Book>();
-		try {
-			while(rs.next()) {
-				bookList.add(new Book(rs.getString("isbn"),
-						rs.getString("titulo"),
-						rs.getString("categoria")));
-			}
-		}catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
+		var bookList = helper.seleccionarRegistros(consultaSQL,Book.class);
+		
 		return bookList;
 		}
 }
