@@ -1,11 +1,10 @@
-package com.arquitecturajava.domain;
+package com.arquitecturajava;
 
-import com.arquitecturajava.DataBaseHelper;
 import java.sql.ResultSet;
 
-
 public class Book {
-	
+
+
 	public static ResultSet searchAllCategory() {
 		String consultaSQL = "select distinct(categoria) from Libros";
 		DataBaseHelper helper = new DataBaseHelper();
@@ -25,5 +24,4 @@ public class Book {
 		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
 		return rs;
 		}
-
 }
