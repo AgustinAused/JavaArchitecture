@@ -1,6 +1,9 @@
 package com.arquitecturajava;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Book {
 
@@ -36,23 +39,43 @@ public class Book {
 	}
 
 
-	public static ResultSet searchAllCategory() {
+	public static List<String> searchAllCategory() {
 		String consultaSQL = "select distinct(categoria) from Libros";
 		DataBaseHelper helper = new DataBaseHelper();
 		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
-		return rs;
+		var categogyList = new ArrayList<String>();
+		String categoria = null;
+		try {
+			while(rs.next()) {
+				categoria = rs.getString("categoria");
+				categogyList.add(categoria);
+			}			
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return categogyList;
 	}
-	public static void insert() {
+	public void insert() {
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
-		consultaSQL += "('" + isbn + "','" + title + "','" + this.category + "')";
+		consultaSQL += "('" + this.isbn + "','" + this.title + "','" + this.category + "')";
 		DataBaseHelper helper = new DataBaseHelper();
 		helper.modificarRegistro(consultaSQL);
 	}
 	
-	public static ResultSet searchAll() {
+	public static List<Book> searchAll() {
 		String consultaSQL = "select isbn,titulo,categoria from Libros";
 		DataBaseHelper helper = new DataBaseHelper();
 		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
-		return rs;
+		var bookList = new ArrayList<Book>();
+		try {
+			while(rs.next()) {
+				bookList.add(new Book(rs.getString("isbn"),
+						rs.getString("titulo"),
+						rs.getString("categoria")));
+			}
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return bookList;
 		}
 }

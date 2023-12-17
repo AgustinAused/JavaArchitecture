@@ -4,7 +4,6 @@
 *.class
 
 # Compiled JSP files
-*.jsp
 
 # Work directories
 work/
