@@ -5,10 +5,15 @@ import java.sql.ResultSet;
 public class Book {
 
 	private String isbn;
-	private String titulo;
-	private String categoria;
+	private String title;
+	private String category;
 	
 	//Constructor
+	public Book(String isbn, String title,String category) {
+		this.isbn = isbn;
+		this.title = title;
+		this.category = category;
+	}
 	
 	//Getters and Setters
 	public String getIsbn() {
@@ -18,16 +23,16 @@ public class Book {
 		this.isbn = isbn;
 	}
 	public String getTitulo() {
-		return titulo;
+		return title;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitulo(String tilte) {
+		this.title = tilte;
 	}
 	public String getCategoria() {
-		return categoria;
+		return category;
 	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCategoria(String category) {
+		this.category = category;
 	}
 
 
@@ -37,9 +42,9 @@ public class Book {
 		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
 		return rs;
 	}
-	public static void insert(String isbn, String titulo, String categoria) {
+	public static void insert() {
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
-		consultaSQL += "('" + isbn + "','" + titulo + "','" + categoria + "')";
+		consultaSQL += "('" + isbn + "','" + title + "','" + this.category + "')";
 		DataBaseHelper helper = new DataBaseHelper();
 		helper.modificarRegistro(consultaSQL);
 	}
