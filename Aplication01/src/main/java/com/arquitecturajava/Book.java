@@ -4,6 +4,32 @@ import java.sql.ResultSet;
 
 public class Book {
 
+	private String isbn;
+	private String titulo;
+	private String categoria;
+	
+	//Constructor
+	
+	//Getters and Setters
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 
 	public static ResultSet searchAllCategory() {
 		String consultaSQL = "select distinct(categoria) from Libros";
