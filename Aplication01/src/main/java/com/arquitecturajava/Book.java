@@ -42,9 +42,9 @@ public class Book {
 		ResultSet rs = helper.seleccionarRegistros(consultaSQL);
 		return rs;
 	}
-	public static void insert() {
+	public void insert() {
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
-		consultaSQL += "('" + isbn + "','" + title + "','" + this.category + "')";
+		consultaSQL += "('" + this.isbn + "','" + this.title + "','" + this.category + "')";
 		DataBaseHelper helper = new DataBaseHelper();
 		helper.modificarRegistro(consultaSQL);
 	}
