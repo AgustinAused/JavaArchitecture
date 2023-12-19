@@ -18,6 +18,10 @@ public class Book {
 		this.category = category;
 	}
 	
+	public Book(String isbn) {
+		this.isbn = isbn;
+	}
+	
 	//Getters and Setters
 	public String getIsbn() {
 		return isbn;
@@ -59,5 +63,12 @@ public class Book {
 		var bookList = helper.seleccionarRegistros(consultaSQL,Book.class);
 		
 		return bookList;
-		}
+	}
+	
+	public void delete() {
+		String consultaSQL = "delete from Libros where isbn='" + this.isbn + "'";
+		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
+		helper.modificarRegistro(consultaSQL);
+		
+	}
 }

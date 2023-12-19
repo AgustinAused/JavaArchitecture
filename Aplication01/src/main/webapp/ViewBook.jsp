@@ -1,4 +1,3 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
@@ -37,10 +36,11 @@
 	<%=libro.getIsbn()%>
 	<%=libro.getTitulo()%>
 	<%=libro.getCategoria()%>
+	<a href="DeleteBook.jsp?isbn=<%=libro.getIsbn()%>">Delete</a>
 	<br />
 	<%
 	}
 	%>
-	<a href="FormInsertBook.jsp">Insertar Libro</a>
+	<a href="FormInsertBook.jsp">Insert Book</a>
 </body>
 </html>
