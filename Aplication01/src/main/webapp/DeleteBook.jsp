@@ -6,6 +6,6 @@
 	String isbn = request.getParameter("isbn");
 	Book book = new Book(isbn);
 	book.delete();
-	response.sendRedirect("ViewBool.jsp");
+	response.sendRedirect("ViewBook.jsp");
 	
 %>
