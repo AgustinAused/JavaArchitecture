@@ -18,6 +18,10 @@ public class Book {
 		this.category = category;
 	}
 	
+	public Book(String isbn) {
+		this.isbn = isbn;
+	}
+	
 	//Getters and Setters
 	public String getIsbn() {
 		return isbn;
