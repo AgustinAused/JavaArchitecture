@@ -19,6 +19,9 @@ public class Book {
 		this.isbn = isbn;
 	}
 	
+	public Book() {
+    }
+	
 	//Getters and Setters
 	public String getIsbn() {
 		return isbn;
@@ -27,10 +30,11 @@ public class Book {
 		this.isbn = isbn;
 	}
 	public String getTitulo() {
-		return title;
+	    return title;
 	}
-	public void setTitulo(String tilte) {
-		this.title = tilte;
+
+	public void setTitulo(String title) {
+	    this.title = title;
 	}
 	public String getCategoria() {
 		return category;
@@ -39,9 +43,9 @@ public class Book {
 		this.category = category;
 	}
 
-
+	//methods
 	public static List<String> searchAllCategory() {
-		String consultaSQL = "select distint(categoria) from Libros";
+		String consultaSQL = "select distinct categoria from Libros";
 		DataBaseHelper<String> helper = new DataBaseHelper<String>();
 		List<String> categoryList = helper.seleccionarRegistros(consultaSQL,
 		String.class);
@@ -55,7 +59,7 @@ public class Book {
 	}
 	
 	public static List<Book> searchAll() {
-		String consultaSQL = "select isbn,titulo,categoria from Libros";
+		String consultaSQL = "SELECT isbn,titulo,categoria FROM Libros";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		var bookList = helper.seleccionarRegistros(consultaSQL,Book.class);
 		

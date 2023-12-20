@@ -11,15 +11,15 @@ import java.util.ArrayList;
 
 public class DataBaseHelper<T> {
 
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
+	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/javaarchitecture"; // System.getenv("URL");
 	private static final String USER = "root"; // System.getenv("USER");
 	private static final String PASSWORD = "Agustin-aused4"; // System.getenv("PASSWORDDB")
 
 	public DataBaseHelper() {
-		System.out.println("URL: " + URL);
-		System.out.println("USER: " + USER);
-		System.out.println("PASSWORD: " + PASSWORD);
+//		System.out.println("URL: " + URL);
+//		System.out.println("USER: " + USER);
+//		System.out.println("PASSWORD: " + PASSWORD);
 	}
 
 	public int modificarRegistro(String consultaSQL) {
@@ -59,7 +59,7 @@ public class DataBaseHelper<T> {
 		return filasAfectadas;
 	}
 
-	public List<T> seleccionarRegistros(String consultaSQL, Class clase) {
+	public List<T> seleccionarRegistros(String consultaSQL, Class<T> clase) {
 		Connection conexion = null;
 		Statement sentencia = null;
 		ResultSet filas = null;
@@ -70,20 +70,21 @@ public class DataBaseHelper<T> {
 			sentencia = conexion.createStatement();
 			filas = sentencia.executeQuery(consultaSQL);
 			while (filas.next()) {
-				T objeto = (T) Class.forName(clase.getName()).newInstance();
+				T objeto = clase.getDeclaredConstructor().newInstance();
 				Method[] metodos = objeto.getClass().getDeclaredMethods();
 				for (int i = 0; i < metodos.length; i++) {
 					if (metodos[i].getName().startsWith("set")) {
 						metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
 					}
 					if (objeto.getClass().getName().equals("java.lang.String")) {
-						objeto = (T) filas.getString(1);
+						objeto = extracted(filas);
 					}
 				}
 				listaDeObjetos.add(objeto);
 			}
 		} catch (Exception e) {
 			System.out.println("Error al seleccionar registros" + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			if (sentencia != null) {
 				try {
@@ -100,5 +101,9 @@ public class DataBaseHelper<T> {
 		}
 		return listaDeObjetos;
 
+	}
+
+	private T extracted(ResultSet filas) throws SQLException {
+		return (T) filas.getString(1);
 	}
 }
