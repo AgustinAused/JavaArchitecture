@@ -17,7 +17,7 @@
 			<legend>Formulario Edición Libro</legend>
 			<p>
 				<label for="isbn">ISBN:</label> <input type="text" id="isbn"
-					name="isbn" value="<%=book.getIsbn()%>" required />
+					name="isbn" value="<%=book.getIsbn()%>" required  readonly/>
 			</p>
 			<p>
 				<label for="titulo">Título:</label> <input type="text" id="titulo"
