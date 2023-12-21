@@ -37,7 +37,7 @@
     <%= libro.getTitulo() %> | 
     <%= libro.getCategoria() %>
     <a href="DeleteBook.jsp?isbn=<%= libro.getIsbn() %>">Delete</a>
-    <a href="EditBook.jsp?isbn=<%= libro.getIsbn() %>">Edit</a>
+    <a href="FormEditBook.jsp?isbn=<%= libro.getIsbn() %>">Edit</a>
     <br />
 
     <%
