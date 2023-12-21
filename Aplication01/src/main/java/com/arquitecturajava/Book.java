@@ -66,10 +66,31 @@ public class Book {
 		return bookList;
 	}
 	
+	public static Book findByIsbn(String isbn) {
+		String consulta = "select isbn,titulo,categoria from Libros where isbn =" + isbn + "";
+		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
+		var bookList = helper.seleccionarRegistros(consulta,Book.class);
+		return bookList.get(0);
+		
+	}
+	
 	public void delete() {
 		String consultaSQL = "delete from Libros where isbn='" + this.isbn + "'";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);
 		
 	}
+	
+	public void save() {
+		String consultaSQL = "update Libros set titulo=" + this.title + ", categoria=" + this.category + " where isbn=" + this.isbn + "";
+		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
+		helper.modificarRegistro(consultaSQL);
+	}
+
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", title=" + title + ", category=" + category + "]";
+	}
+	
+	
 }
