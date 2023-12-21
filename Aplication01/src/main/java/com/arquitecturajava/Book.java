@@ -66,6 +66,14 @@ public class Book {
 		return bookList;
 	}
 	
+	public static Book searchForKey(String isbn) {
+		String consulta = "select isbn,titulo,categoria from Libros where isbn = " + isbn + "";
+		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
+		var bookList = helper.seleccionarRegistros(consulta,Book.class);
+		return bookList.get(0);
+		
+	}
+	
 	public void delete() {
 		String consultaSQL = "delete from Libros where isbn='" + this.isbn + "'";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
