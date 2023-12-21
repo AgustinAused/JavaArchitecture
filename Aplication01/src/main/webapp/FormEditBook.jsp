@@ -20,8 +20,8 @@
 					name="isbn" value="<%=book.getIsbn()%>" required  readonly/>
 			</p>
 			<p>
-				<label for="titulo">Título:</label> <input type="text" id="titulo"
-					name="titulo" value="<%=book.getTitulo() %>" required />
+				<label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" value="<%=book.getTitulo() %>" required />
 			</p>
 			<p>
 				<label for="categoria">Categoría:</label> <select name="categoria">
