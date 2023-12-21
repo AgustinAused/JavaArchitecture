@@ -4,7 +4,7 @@
 
 <%	
 	String isbn = request.getParameter("isbn");
-	String titulo = request.getParameter("tiutlo");
+	String titulo = request.getParameter("titulo");
 	String categoria = request.getParameter("categoria");
 	
 	//create a Book
