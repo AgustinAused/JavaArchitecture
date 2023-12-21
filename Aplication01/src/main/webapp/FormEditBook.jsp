@@ -3,13 +3,14 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.arquitecturajava.Book"%>
 
-<% Book book = Book.searchForKey(request.getParameter("isbn")); %>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Form Edit Book</title>
 </head>
+<% Book book = Book.findByIsbn(request.getParameter("isbn")); %>
 <body>
 	<form id="editForm" action="EditBook.jsp">
 		<fieldset>
