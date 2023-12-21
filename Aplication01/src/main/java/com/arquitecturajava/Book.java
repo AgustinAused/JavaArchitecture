@@ -51,6 +51,14 @@ public class Book {
 		String.class);
 		return categoryList;
 	}
+	
+	
+	public static List<Book> searchForCategory(String category){
+		String consultaSQL = "select isbn,titulo,categoria from Libros where categoria ='" + category + "'";
+		DataBaseHelper<Book> helper = new DataBaseHelper<Book>();
+		List<Book> bookList = helper.seleccionarRegistros(consultaSQL, Book.class);
+		return bookList;
+	}
 	public void insert() {
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
 		consultaSQL += "('" + this.isbn + "','" + this.title + "','" + this.category + "')";
