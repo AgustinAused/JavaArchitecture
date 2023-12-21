@@ -82,8 +82,15 @@ public class Book {
 	}
 	
 	public void save() {
-		String consultaSQL = "update Libros set titulo=" + this.title +",categoria= "+ this.category +" where isbn="+this.isbn+"";
+		String consultaSQL = "update Libros set titulo=" + this.title + ", categoria=" + this.category + " where isbn=" + this.isbn + "";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);
 	}
+
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", title=" + title + ", category=" + category + "]";
+	}
+	
+	
 }
