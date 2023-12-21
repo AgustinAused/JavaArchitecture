@@ -54,7 +54,7 @@ public class Book {
 	
 	
 	public static List<Book> searchForCategory(String category){
-		String consultaSQL = "select isbn,titulo,categoria from Libros where categoria="+ category +"";
+		String consultaSQL = "select isbn,titulo,categoria from Libros where categoria ='" + category + "'";
 		DataBaseHelper<Book> helper = new DataBaseHelper<Book>();
 		List<Book> bookList = helper.seleccionarRegistros(consultaSQL, Book.class);
 		return bookList;
