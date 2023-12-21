@@ -80,4 +80,10 @@ public class Book {
 		helper.modificarRegistro(consultaSQL);
 		
 	}
+	
+	public void save() {
+		String consultaSQL = "update Libros set titulo=" + this.title +",categoria= "+ this.category +" where isbn="+this.isbn+"";
+		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
+		helper.modificarRegistro(consultaSQL);
+	}
 }
