@@ -66,8 +66,8 @@ public class Book {
 		return bookList;
 	}
 	
-	public static Book searchForKey(String isbn) {
-		String consulta = "select isbn,titulo,categoria from Libros where isbn = " + isbn + "";
+	public static Book findByIsbn(String isbn) {
+		String consulta = "select isbn,titulo,categoria from Libros where isbn =" + isbn + "";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		var bookList = helper.seleccionarRegistros(consulta,Book.class);
 		return bookList.get(0);
