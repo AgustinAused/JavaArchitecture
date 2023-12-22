@@ -1,5 +1,6 @@
 package com.arquitecturajava;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class Book {
@@ -59,7 +60,7 @@ public class Book {
 		List<Book> bookList = helper.seleccionarRegistros(consultaSQL, Book.class);
 		return bookList;
 	}
-	public void insert() {
+	public void insert() throws ClassNotFoundException, SQLException{
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
 		consultaSQL += "('" + this.isbn + "','" + this.title + "','" + this.category + "')";
 		DataBaseHelper helper = new DataBaseHelper();
