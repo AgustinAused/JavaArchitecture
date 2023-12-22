@@ -33,14 +33,12 @@ public class DataBaseHelper<T> {
 			sentencia = conexion.createStatement();
 			filasAfectadas = sentencia.executeUpdate(consultaSQL);
 		} catch (ClassNotFoundException e) {
-			System.out.print("Error en la carga del driver" + e.getMessage());
+			System.out.println("Clase no encontrada" + e.getMessage());
 			throw new DataBaseException("Clase no encontrada");
-
 		} catch (SQLException e) {
-			System.out.println("Error accediendo a la base de datos : " + e.getMessage());
-			throw new DataBaseException("Error SQL");
+			System.out.println("Error de SQL" + e.getMessage());
+			throw new DataBaseException("Error de SQL",e);
 		} finally {
-
 			// 5
 			if (sentencia != null) {
 				try {
@@ -60,7 +58,7 @@ public class DataBaseHelper<T> {
 		return filasAfectadas;
 	}
 
-	public List<T> seleccionarRegistros(String consultaSQL, Class<T> clase) throws Exception{
+	public List<T> seleccionarRegistros(String consultaSQL, Class<T> clase) {
 		Connection conexion = null;
 		Statement sentencia = null;
 		ResultSet filas = null;
@@ -85,7 +83,6 @@ public class DataBaseHelper<T> {
 			}
 		} catch (Exception e) {
 			System.out.println("Error al seleccionar registros" + e.getMessage());
-			throw e;
 		} finally {
 			if (sentencia != null) {
 				try {
