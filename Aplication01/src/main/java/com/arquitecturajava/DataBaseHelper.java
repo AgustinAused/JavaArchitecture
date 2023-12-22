@@ -60,7 +60,7 @@ public class DataBaseHelper<T> {
 		return filasAfectadas;
 	}
 
-	public List<T> seleccionarRegistros(String consultaSQL, Class<T> clase) {
+	public List<T> seleccionarRegistros(String consultaSQL, Class<T> clase) throws Exception{
 		Connection conexion = null;
 		Statement sentencia = null;
 		ResultSet filas = null;
@@ -85,7 +85,7 @@ public class DataBaseHelper<T> {
 			}
 		} catch (Exception e) {
 			System.out.println("Error al seleccionar registros" + e.getMessage());
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (sentencia != null) {
 				try {
