@@ -59,7 +59,7 @@ public class Book {
 		List<Book> bookList = helper.seleccionarRegistros(consultaSQL, Book.class);
 		return bookList;
 	}
-	public void insert() throws DataBaseException{
+	public void insert(){
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
 		consultaSQL += "('" + this.isbn + "','" + this.title + "','" + this.category + "')";
 		DataBaseHelper helper = new DataBaseHelper();
@@ -81,14 +81,14 @@ public class Book {
 		
 	}
 	
-	public void delete() throws DataBaseException {
+	public void delete(){
 		String consultaSQL = "delete from Libros where isbn='" + this.isbn + "'";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);
 		
 	}
 	
-	public void save() throws DataBaseException{
+	public void save(){
 		String consultaSQL = "update Libros set titulo=" + this.title + ", categoria=" + this.category + " where isbn=" + this.isbn + "";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);

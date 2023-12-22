@@ -22,7 +22,7 @@ public class DataBaseHelper<T> {
 //		System.out.println("PASSWORD: " + PASSWORD);
 	}
 
-	public int modificarRegistro(String consultaSQL) throws DataBaseException {
+	public int modificarRegistro(String consultaSQL){
 		Connection conexion = null;
 		Statement sentencia = null;
 		int filasAfectadas = 0;
