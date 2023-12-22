@@ -22,7 +22,7 @@ public class DataBaseHelper<T> {
 //		System.out.println("PASSWORD: " + PASSWORD);
 	}
 
-	public int modificarRegistro(String consultaSQL) {
+	public int modificarRegistro(String consultaSQL) throws ClassNotFoundException,SQLException {
 		Connection conexion = null;
 		Statement sentencia = null;
 		int filasAfectadas = 0;
@@ -34,10 +34,11 @@ public class DataBaseHelper<T> {
 			filasAfectadas = sentencia.executeUpdate(consultaSQL);
 		} catch (ClassNotFoundException e) {
 			System.out.print("Error en la carga del driver" + e.getMessage());
+			throw e;
 
 		} catch (SQLException e) {
 			System.out.println("Error accediendo a la base de datos : " + e.getMessage());
-
+			throw e;
 		} finally {
 
 			// 5
