@@ -1,6 +1,5 @@
 package com.arquitecturajava;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class Book {
@@ -60,7 +59,7 @@ public class Book {
 		List<Book> bookList = helper.seleccionarRegistros(consultaSQL, Book.class);
 		return bookList;
 	}
-	public void insert() throws ClassNotFoundException, SQLException{
+	public void insert() throws DataBaseException{
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
 		consultaSQL += "('" + this.isbn + "','" + this.title + "','" + this.category + "')";
 		DataBaseHelper helper = new DataBaseHelper();
@@ -71,7 +70,6 @@ public class Book {
 		String consultaSQL = "SELECT isbn,titulo,categoria FROM Libros";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		var bookList = helper.seleccionarRegistros(consultaSQL,Book.class);
-		
 		return bookList;
 	}
 	
@@ -83,14 +81,14 @@ public class Book {
 		
 	}
 	
-	public void delete() {
+	public void delete() throws DataBaseException {
 		String consultaSQL = "delete from Libros where isbn='" + this.isbn + "'";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);
 		
 	}
 	
-	public void save() {
+	public void save() throws DataBaseException{
 		String consultaSQL = "update Libros set titulo=" + this.title + ", categoria=" + this.category + " where isbn=" + this.isbn + "";
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);
