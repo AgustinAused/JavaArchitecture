@@ -1,24 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Sentencia necesarias para JDBC -->
-//%@ page import="com.arquitecturajava.DataBaseHelper" %>
 <%@ page import="com.arquitecturajava.Book"%>
+<%@ page import="com.arquitecturajava.DataBaseException" %>
 
 
 <%
-	//1 
-	String isbn = request.getParameter("isbn");
-	String titulo = request.getParameter("titulo");
-	String categoria = request.getParameter("categoria");
-	//realizo la consulta usando el DBHelper y el codigo queda simplificado
-	try{
-	Book book = new Book(isbn,titulo,categoria);
-	book.insert();
-	} catch(Exception e){
-		%>
-		<%= e.getMessage() %>
-		<%
-	}
-	response.sendRedirect("ViewBook.jsp");
-	
-	
-%>
+	try {
+		String isbn = request.getParameter("isbn");
+		String titulo = request.getParameter("titulo");
+		String categoria = request.getParameter("categoria");
+		//realizo la consulta usando el DBHelper y el codigo queda simplificado
+		Book book = new Book(isbn, titulo, categoria);
+		book.insert();
+		response.sendRedirect("ViewBook.jsp");
+	} catch (DataBaseException e) {%>
+		<%=e.getMessage()%>
+		<%=e.getCause().getMessage()%>
+<%}%>
