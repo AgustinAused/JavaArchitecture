@@ -4,7 +4,6 @@
 <%@ page import="com.arquitecturajava.Book"%>
 
 <%	
-try{	
 	String isbn = request.getParameter("isbn");
 	String titulo = request.getParameter("titulo");
 	String categoria = request.getParameter("categoria");
@@ -15,7 +14,4 @@ try{
 	book.save();
 	//redirect
 	response.sendRedirect("ViewBook.jsp");
-} catch(DataBaseException e){
-	%>
-	<%=e.getMessage()%>
-<%}%>
+%>

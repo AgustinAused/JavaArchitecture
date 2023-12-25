@@ -5,12 +5,8 @@
 <%@ page import="com.arquitecturajava.DataBaseException"%>
 
 <%
-try{
 	String isbn = request.getParameter("isbn");
 	Book book = new Book(isbn);
 	book.delete();
 	response.sendRedirect("ViewBook.jsp");
-	} catch(DataBaseException e){
-		%>
-		<%=e.getMessage()%>
-<%}%>
+%>
