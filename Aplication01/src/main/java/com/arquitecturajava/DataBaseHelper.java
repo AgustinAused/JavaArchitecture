@@ -22,7 +22,7 @@ public class DataBaseHelper<T> {
 //		System.out.println("PASSWORD: " + PASSWORD);
 	}
 
-	public int modificarRegistro(String consultaSQL) throws ClassNotFoundException,SQLException {
+	public int modificarRegistro(String consultaSQL){
 		Connection conexion = null;
 		Statement sentencia = null;
 		int filasAfectadas = 0;
@@ -33,14 +33,12 @@ public class DataBaseHelper<T> {
 			sentencia = conexion.createStatement();
 			filasAfectadas = sentencia.executeUpdate(consultaSQL);
 		} catch (ClassNotFoundException e) {
-			System.out.print("Error en la carga del driver" + e.getMessage());
-			throw e;
-
+			System.out.println("Clase no encontrada" + e.getMessage());
+			throw new DataBaseException("Clase no encontrada");
 		} catch (SQLException e) {
-			System.out.println("Error accediendo a la base de datos : " + e.getMessage());
-			throw e;
+			System.out.println("Error de SQL" + e.getMessage());
+			throw new DataBaseException("Error de SQL",e);
 		} finally {
-
 			// 5
 			if (sentencia != null) {
 				try {
@@ -85,7 +83,6 @@ public class DataBaseHelper<T> {
 			}
 		} catch (Exception e) {
 			System.out.println("Error al seleccionar registros" + e.getMessage());
-			e.printStackTrace();
 		} finally {
 			if (sentencia != null) {
 				try {
