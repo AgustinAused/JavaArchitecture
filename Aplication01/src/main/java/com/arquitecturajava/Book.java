@@ -3,6 +3,7 @@ package com.arquitecturajava;
 import java.util.List;
 
 public class Book {
+	
 
 	private String isbn;
 	private String title;
@@ -89,7 +90,8 @@ public class Book {
 	}
 	
 	public void save(){
-		String consultaSQL = "update Libros set titulo=" + this.title + ", categoria=" + this.category + " where isbn=" + this.isbn + "";
+		String consultaSQL = "update Libros set titulo='" + this.title + "', categoria='" + this.category + "' where isbn='" + this.isbn + "'";
+		System.out.println(consultaSQL);
 		DataBaseHelper<Book>  helper = new DataBaseHelper<Book>();
 		helper.modificarRegistro(consultaSQL);
 	}
