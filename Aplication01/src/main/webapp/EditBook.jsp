@@ -13,5 +13,5 @@
 	//save a edit book
 	book.save();
 	//redirect
-	response.sendRedirect("ViewBook.jsp");
+	response.sendRedirect(request.getContextPath() + "/ControlerBook");
 %>

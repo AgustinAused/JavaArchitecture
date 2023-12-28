@@ -12,5 +12,5 @@
 		//realizo la consulta usando el DBHelper y el codigo queda simplificado
 		Book book = new Book(isbn, titulo, categoria);
 		book.insert();
-		response.sendRedirect("ViewBook.jsp");
+		response.sendRedirect(request.getContextPath() + "/ControlerBook");
 	%>
