@@ -7,14 +7,8 @@
 		<exception-type>java.lang.RuntimeException</exception-type>
 		<location>/Error.jsp</location>
 	</error-page>
-	<servlet>
-		<description></description>
-		<display-name>ControlerBook</display-name>
-		<servlet-name>ControlerBook</servlet-name>
-		<servlet-class>com.arquitecturajava.ControlerBook</servlet-class>
-	</servlet>
-	<servlet-mapping>
+	<!-- <servlet-mapping>
 		<servlet-name>ControlerBook</servlet-name>
 		<url-pattern>/ControlerBook</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 </web-app>
