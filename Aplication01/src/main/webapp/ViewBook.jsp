@@ -19,18 +19,22 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 <body>
 	<form action="<%=request.getContextPath()%>/ControlerBook" method="get">
 		<select name="selectedCategory">
-			<option value="seleccionar">Seleccionar</option>
-			
+		<option value="seleccionar">seleccionar</option>
 			<%
 			for (String categoria : listaDeCategorias) {
+				if (categoria.equals(request.getParameter("selectedCategory"))) {
 			%>
-			<option value="<%=categoria%>"
-				<%=categoria.equals(request.getParameter("selectedCategory")) ? "seleccionar" : ""%>><%=categoria%></option>
+			<option value="<%=categoria%>" selected><%=categoria%></option>
 			<%
+			} else {
+			%>
+			<option value="<%=categoria%>"><%=categoria%></option>
+			<%
+			}
 			}
 			%>
 		</select>
-		<input type="submit" value="Filtrar">
+	<input type="submit" value="Filtrar">
 	</form>
 	<br />
 
