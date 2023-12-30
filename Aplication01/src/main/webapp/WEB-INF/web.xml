@@ -17,7 +17,6 @@
 		<servlet-name>ControlerBook</servlet-name>
 		<url-pattern>/ControlerBook</url-pattern>
 	</servlet-mapping>
-
 	<servlet-mapping>
 		<servlet-name>ControlerBook</servlet-name>
 		<url-pattern>/ControlerBook/ViewBook</url-pattern>
