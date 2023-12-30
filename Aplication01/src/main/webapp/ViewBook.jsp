@@ -34,6 +34,7 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 			}
 			%>
 		</select>
+	<input type="submit" value="Filtrar">
 	</form>
 	<br />
 

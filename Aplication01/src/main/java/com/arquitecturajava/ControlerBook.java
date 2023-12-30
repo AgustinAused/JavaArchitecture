@@ -18,6 +18,7 @@ public class ControlerBook extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher despachador = null;
 		System.out.println(request.getServletPath());
+
 		if (request.getServletPath().equals("/ControlerBook/ViewBook")) {
 			List<Book> listaDeLibros = Book.searchAll();
 			System.out.println(listaDeLibros.isEmpty());
