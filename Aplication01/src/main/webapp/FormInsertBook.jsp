@@ -9,7 +9,7 @@
 
 	<h1>Formulario Alta de libros</h1>
 
-	<form action="InsertBook.jsp" onsubmit="return validation();">
+	<form action="InsertBook" onsubmit="return validation();">
 		<div class="form-group">
 			<label for="isbn">ISBN</label> <input type="text"
 				class="form-control" id="isbn" name="isbn"
