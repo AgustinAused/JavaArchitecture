@@ -19,7 +19,6 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 <body>
 	<form action="<%=request.getContextPath()%>/ControlerBook" method="get">
 		<select name="selectedCategory">
-<<<<<<< HEAD
 		<option value="seleccionar">seleccionar</option>
 			<%
 			for (String categoria : listaDeCategorias) {
@@ -35,21 +34,6 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 			}
 			%>
 		</select>
-	<input type="submit" value="Filtrar">
-=======
-			<option value="seleccionar">Seleccionar</option>
-			
-			<%
-			for (String categoria : listaDeCategorias) {
-			%>
-			<option value="<%=categoria%>"
-				<%=categoria.equals(request.getParameter("selectedCategory")) ? "seleccionar" : ""%>><%=categoria%></option>
-			<%
-			}
-			%>
-		</select>
-		<input type="submit" value="Filtrar">
->>>>>>> 32a8373 (Refactored the ViewBook.jsp JSP file, applying the Single Responsibility Principle (SRP))
 	</form>
 	<br />
 
