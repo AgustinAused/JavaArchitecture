@@ -1,5 +1,6 @@
 package com.arquitecturajava;
 
+<<<<<<< HEAD
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
