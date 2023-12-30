@@ -1,6 +1,6 @@
 package com.arquitecturajava;
 
-<<<<<<< HEAD
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 //import jakarta.servlet.annotation.WebServlet;
@@ -9,12 +9,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
 public class ControlerBook extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher despachador = null;
 		System.out.println(request.getServletPath());
 		
@@ -48,14 +48,4 @@ public class ControlerBook extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
-=======
-		List<Book> listaDeLibros = Book.searchAll();
-		List<String> listaDeCategorias = Book.searchAllCategory();
-		request.setAttribute("listaDeLibros", listaDeLibros);
-		request.setAttribute("listaDeCategorias", listaDeCategorias);
-		despachador = request.getRequestDispatcher("ViewBook.jsp");
-		despachador.forward(request, response);
-	}
->>>>>>> 32a8373 (Refactored the ViewBook.jsp JSP file, applying the Single Responsibility Principle (SRP))
 }
