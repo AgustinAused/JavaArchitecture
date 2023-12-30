@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
 public class ControlerBook extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -32,12 +31,17 @@ public class ControlerBook extends HttpServlet {
 			listaDeCategorias = Book.searchAllCategory();
 			request.setAttribute("listaDeCategorias", listaDeCategorias);
 			despachador = request.getRequestDispatcher("/FormInsertBook.jsp");
-		} else {
+		} else if (request.getServletPath().equals("/ControlerBook/InsertBook")) {
 			String isbn = request.getParameter("isbn");
 			String titulo = request.getParameter("titulo");
 			String categoria = request.getParameter("categoria");
 			var libro = new Book(isbn, titulo, categoria);
 			libro.insert();
+			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
+		} else {
+			String isbn = request.getParameter("isbn");
+			var book = new Book(isbn);
+			book.delete();
 			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
 		}
 		despachador.forward(request, response);
