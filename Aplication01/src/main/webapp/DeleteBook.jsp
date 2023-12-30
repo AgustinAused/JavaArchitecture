@@ -8,5 +8,5 @@
 	String isbn = request.getParameter("isbn");
 	Book book = new Book(isbn);
 	book.delete();
-	response.sendRedirect("ViewBook.jsp");
+	response.sendRedirect(request.getContextPath() + "/ControlerBook");
 %>

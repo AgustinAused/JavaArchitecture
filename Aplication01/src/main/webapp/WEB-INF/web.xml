@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<error-page>
 		<exception-type>java.lang.RuntimeException</exception-type>
 		<location>/Error.jsp</location>
 	</error-page>
+	<servlet>
+		<description></description>
+		<display-name>ControlerBook</display-name>
+		<servlet-name>ControlerBook</servlet-name>
+		<servlet-class>com.arquitecturajava.ControlerBook</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControlerBook</servlet-name>
+		<url-pattern>/ControlerBook</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ControlerBook</servlet-name>
+		<url-pattern>/ControlerBook/ViewBook</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ControlerBook</servlet-name>
+		<url-pattern>/ControlerBook/FormInsertBook</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ControlerBook</servlet-name>
+		<url-pattern>/ControlerBook/InsertBook</url-pattern>
+	</servlet-mapping>
 </web-app>
