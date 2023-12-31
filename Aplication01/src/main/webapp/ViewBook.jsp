@@ -17,7 +17,7 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 <title>Lista de Libros</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/ControlerBook" method="get">
+	<form action="ViewBook" method="get">
 		<select name="selectedCategory">
 		<option value="seleccionar">seleccionar</option>
 			<%
@@ -44,7 +44,7 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 	<%=libro.getIsbn()%>
 	<%=libro.getTitulo()%>
 	<%=libro.getCategoria()%>
-	<a href="DeleteBook.jsp?isbn=<%=libro.getIsbn()%>">Borrar</a>
+	<a href="DeleteBook?isbn=<%=libro.getIsbn()%>">Borrar</a>
 	<a href="FormEditBook.jsp?isbn=<%=libro.getIsbn()%>">Editar</a>
 	<br />
 	<%
