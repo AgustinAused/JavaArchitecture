@@ -12,7 +12,7 @@
 </head>
 <% Book book = Book.findByIsbn(request.getParameter("isbn")); %>
 <body>
-	<form id="editForm" action="EditBook.jsp">
+	<form id="editForm" action="<%= request.getContextPath()%>/ControlerBook/SaveBook" method="get">
 		<fieldset>
 			<legend>Formulario Edición Libro</legend>
 			<p>
