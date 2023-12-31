@@ -23,11 +23,11 @@ public class ControlerBook extends HttpServlet {
 			String selectdISBN = request.getParameter("selectedCategory");
 			System.out.println("existe selectedCtegory : ");
 			System.out.println(request.getParameter("selectedCategory"));
+
 			if(request.getParameter("selectedCategory") == null ) selectdISBN = "seleccionar";
 			if(selectdISBN.equals("seleccionar")) {
 				listaDeLibros = Book.searchAll();				
 			}else {
-
 				listaDeLibros = Book.searchForCategory(selectdISBN);
 			}
 			System.out.println(listaDeLibros.isEmpty());
