@@ -36,4 +36,9 @@
 		<servlet-name>ControlerBook</servlet-name>
 		<url-pattern>/ControlerBook/InsertBook</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ControlerBook</servlet-name>
+		<url-pattern>/ControlerBook/DeleteBook</url-pattern>
+	</servlet-mapping>
 </web-app>
