@@ -19,7 +19,16 @@ public class ControlerBook extends HttpServlet {
 		System.out.println(request.getServletPath());
 
 		if (request.getServletPath().equals("/ControlerBook/ViewBook")) {
-			List<Book> listaDeLibros = Book.searchAll();
+			List<Book> listaDeLibros = null;
+			String selectdISBN = request.getParameter("selectedCategory");
+			System.out.println("existe selectedCtegory : ");
+			System.out.println(request.getParameter("selectedCategory"));
+			if(request.getParameter("selectedCategory") == null ) selectdISBN = "seleccionar";
+			if(selectdISBN.equals("seleccionar")) {
+				listaDeLibros = Book.searchAll();				
+			}else {
+				listaDeLibros = Book.searchForCategory(selectdISBN);
+			}
 			System.out.println(listaDeLibros.isEmpty());
 			List<String> listaDeCategorias = Book.searchAllCategory();
 			System.out.println(listaDeCategorias.isEmpty());
