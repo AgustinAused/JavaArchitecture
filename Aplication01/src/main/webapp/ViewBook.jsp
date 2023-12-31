@@ -44,7 +44,7 @@ List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCat
 	<%=libro.getTitulo()%>
 	<%=libro.getCategoria()%>
 	<a href="DeleteBook?isbn=<%=libro.getIsbn()%>">Borrar</a>
-
+	
 	<a href="FormEditBook?isbn=<%=libro.getIsbn()%>">Editar</a>
 
 	<br />
