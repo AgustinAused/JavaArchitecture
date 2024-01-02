@@ -24,8 +24,7 @@ public class ControlerBook extends HttpServlet {
 			System.out.println("existe selectedCtegory : ");
 			System.out.println(request.getParameter("selectedCategory"));
 
-			if(request.getParameter("selectedCategory") == null ) selectdISBN = "seleccionar";
-			if(selectdISBN.equals("seleccionar")) {
+			if(request.getParameter("selectedCategory") == null || request.getParameter("selectedCategory").equals("seleccionar")) {
 				listaDeLibros = Book.searchAll();				
 			}else {
 				listaDeLibros = Book.searchForCategory(selectdISBN);
