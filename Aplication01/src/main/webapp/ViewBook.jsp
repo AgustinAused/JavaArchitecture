@@ -90,24 +90,28 @@ a {
     <input type="submit" value="Filtrar">
 </form>
 	<div class="book-container">
+	<c:forEach var="libro" items="${ listaDeLibros}">
+	<div class="book-card">
+			<p>
+				<strong>ISBN:</strong>
+				${libro.getIsbn()}</p>
+			<p>
+				<strong>Título:</strong>
+				${libro.getTitulo()}</p>
+			<p>
+				<strong>Categoría:</strong>
+				${libro.getCategoria()}</p>
+			<div class="book-actions">
+				<a href="DeleteBook?isbn=${libro.getIsbn()}">Borrar</a> <a
+					href="FormEditBook?isbn=${libro.getIsbn()}">Editar</a>
+			</div>
+		</div>
+	
+	</c:forEach>
 		<%
 		for (Book libro : listaDeLibros) {
 		%>
-		<div class="book-card">
-			<p>
-				<strong>ISBN:</strong>
-				<%=libro.getIsbn()%></p>
-			<p>
-				<strong>Título:</strong>
-				<%=libro.getTitulo()%></p>
-			<p>
-				<strong>Categoría:</strong>
-				<%=libro.getCategoria()%></p>
-			<div class="book-actions">
-				<a href="DeleteBook?isbn=<%=libro.getIsbn()%>">Borrar</a> <a
-					href="FormEditBook?isbn=<%=libro.getIsbn()%>">Editar</a>
-			</div>
-		</div>
+		
 		<%
 		}
 		%>
