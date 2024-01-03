@@ -12,6 +12,7 @@ import java.util.List;
 import com.javaArchitecture.Book;
 import com.javaArchitecture.controller.actions.Action;
 import com.javaArchitecture.controller.actions.DeleteBookAction;
+import com.javaArchitecture.controller.actions.SaveAction;
 
 public class ControlerBook extends HttpServlet {
 
@@ -28,9 +29,10 @@ public class ControlerBook extends HttpServlet {
 			System.out.println("existe selectedCtegory : ");
 			System.out.println(request.getParameter("selectedCategory"));
 
-			if(request.getParameter("selectedCategory") == null || request.getParameter("selectedCategory").equals("seleccionar")) {
-				listaDeLibros = Book.searchAll();				
-			}else {
+			if (request.getParameter("selectedCategory") == null
+					|| request.getParameter("selectedCategory").equals("seleccionar")) {
+				listaDeLibros = Book.searchAll();
+			} else {
 				listaDeLibros = Book.searchForCategory(selectdISBN);
 			}
 			System.out.println(listaDeLibros.isEmpty());
@@ -58,16 +60,10 @@ public class ControlerBook extends HttpServlet {
 			request.setAttribute("libro", book);
 			request.setAttribute("listaDeCategorias", listaDeCategorias);
 			despachador = request.getRequestDispatcher("/FormEditBook.jsp");
-		} else if(request.getServletPath().equals("/ControlerBook/DeleteBook")) {
+		} else if (request.getServletPath().equals("/ControlerBook/DeleteBook")) {
 			action = new DeleteBookAction();
-		}else if(request.getServletPath().equals("/ControlerBook/SaveBook")) {
-			String isbn = request.getParameter("isbn");
-			String titulo = request.getParameter("titulo");
-			String categoria = request.getParameter("categoria");
-			var libro = new Book(isbn, titulo, categoria);
-			libro.save();
-			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
-			
+		} else if (request.getServletPath().equals("/ControlerBook/SaveBook")) {
+			action = new SaveAction();
 		}
 		despachador = request.getRequestDispatcher(action.execute(request, response));
 		despachador.forward(request, response);
