@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.javaArchitecture.Book;
+import com.javaArchitecture.controller.actions.Action;
+import com.javaArchitecture.controller.actions.DeleteBookAction;
 
 public class ControlerBook extends HttpServlet {
 
@@ -19,7 +21,7 @@ public class ControlerBook extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher despachador = null;
 		System.out.println(request.getServletPath());
-
+		Action action = null;
 		if (request.getServletPath().equals("/ControlerBook/ViewBook")) {
 			List<Book> listaDeLibros = null;
 			String selectdISBN = request.getParameter("selectedCategory");
@@ -57,10 +59,7 @@ public class ControlerBook extends HttpServlet {
 			request.setAttribute("listaDeCategorias", listaDeCategorias);
 			despachador = request.getRequestDispatcher("/FormEditBook.jsp");
 		} else if(request.getServletPath().equals("/ControlerBook/DeleteBook")) {
-			String isbn = request.getParameter("isbn");
-			var book = new Book(isbn);
-			book.delete();
-			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
+			action = new DeleteBookAction();
 		}else if(request.getServletPath().equals("/ControlerBook/SaveBook")) {
 			String isbn = request.getParameter("isbn");
 			String titulo = request.getParameter("titulo");
@@ -70,6 +69,7 @@ public class ControlerBook extends HttpServlet {
 			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
 			
 		}
+		despachador = request.getRequestDispatcher(action.execute(request, response));
 		despachador.forward(request, response);
 	}
 
