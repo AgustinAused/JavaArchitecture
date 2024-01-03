@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.javaArchitecture.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
+import com.javaArchitecture.Book;
 
 public class ControlerBook extends HttpServlet {
 

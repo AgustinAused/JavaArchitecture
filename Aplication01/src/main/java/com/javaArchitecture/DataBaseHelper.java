@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.javaArchitecture;
 
 import java.lang.reflect.Method;
 import java.sql.Connection;

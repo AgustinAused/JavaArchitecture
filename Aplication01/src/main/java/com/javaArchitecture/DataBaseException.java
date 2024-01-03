@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.javaArchitecture;
 
 public class DataBaseException extends RuntimeException {
 
