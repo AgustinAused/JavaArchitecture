@@ -12,6 +12,7 @@ import java.util.List;
 import com.javaArchitecture.Book;
 import com.javaArchitecture.controller.actions.Action;
 import com.javaArchitecture.controller.actions.DeleteBookAction;
+import com.javaArchitecture.controller.actions.FormEditBookAction;
 import com.javaArchitecture.controller.actions.SaveAction;
 
 public class ControlerBook extends HttpServlet {
@@ -54,12 +55,7 @@ public class ControlerBook extends HttpServlet {
 			libro.insert();
 			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
 		} else if (request.getServletPath().equals("/ControlerBook/FormEditBook")) {
-			String isbn = request.getParameter("isbn");
-			List<String> listaDeCategorias = Book.searchAllCategory();
-			Book book = Book.findByIsbn(isbn);
-			request.setAttribute("libro", book);
-			request.setAttribute("listaDeCategorias", listaDeCategorias);
-			despachador = request.getRequestDispatcher("/FormEditBook.jsp");
+			action = new FormEditBookAction();
 		} else if (request.getServletPath().equals("/ControlerBook/DeleteBook")) {
 			action = new DeleteBookAction();
 		} else if (request.getServletPath().equals("/ControlerBook/SaveBook")) {
