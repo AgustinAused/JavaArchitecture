@@ -10,10 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.javaArchitecture.Book;
-import com.javaArchitecture.controller.actions.Action;
-import com.javaArchitecture.controller.actions.DeleteBookAction;
-import com.javaArchitecture.controller.actions.FormEditBookAction;
-import com.javaArchitecture.controller.actions.SaveAction;
+import com.javaArchitecture.controller.actions.*;
 
 public class ControlerBook extends HttpServlet {
 
@@ -25,35 +22,11 @@ public class ControlerBook extends HttpServlet {
 		System.out.println(request.getServletPath());
 		Action action = null;
 		if (request.getServletPath().equals("/ControlerBook/ViewBook")) {
-			List<Book> listaDeLibros = null;
-			String selectdISBN = request.getParameter("selectedCategory");
-			System.out.println("existe selectedCtegory : ");
-			System.out.println(request.getParameter("selectedCategory"));
-
-			if (request.getParameter("selectedCategory") == null
-					|| request.getParameter("selectedCategory").equals("seleccionar")) {
-				listaDeLibros = Book.searchAll();
-			} else {
-				listaDeLibros = Book.searchForCategory(selectdISBN);
-			}
-			System.out.println(listaDeLibros.isEmpty());
-			List<String> listaDeCategorias = Book.searchAllCategory();
-			System.out.println(listaDeCategorias.isEmpty());
-			request.setAttribute("listaDeLibros", listaDeLibros);
-			request.setAttribute("listaDeCategorias", listaDeCategorias);
-			despachador = request.getRequestDispatcher("/ViewBook.jsp");
+			action = new ViewBookAction();
 		} else if (request.getServletPath().equals("/ControlerBook/FormInsertBook")) {
-			List<String> listaDeCategorias = null;
-			listaDeCategorias = Book.searchAllCategory();
-			request.setAttribute("listaDeCategorias", listaDeCategorias);
-			despachador = request.getRequestDispatcher("/FormInsertBook.jsp");
+			action = new FormInsertBookAction();
 		} else if (request.getServletPath().equals("/ControlerBook/InsertBook")) {
-			String isbn = request.getParameter("isbn");
-			String titulo = request.getParameter("titulo");
-			String categoria = request.getParameter("categoria");
-			var libro = new Book(isbn, titulo, categoria);
-			libro.insert();
-			despachador = request.getRequestDispatcher("/ControlerBook/ViewBook");
+			action = new InsertBookAction();
 		} else if (request.getServletPath().equals("/ControlerBook/FormEditBook")) {
 			action = new FormEditBookAction();
 		} else if (request.getServletPath().equals("/ControlerBook/DeleteBook")) {
@@ -67,7 +40,6 @@ public class ControlerBook extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 }
